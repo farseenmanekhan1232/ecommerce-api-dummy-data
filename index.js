@@ -23,7 +23,7 @@ app.get("/:category", (req, res) => {
 });
 
 app.get("/product/:name", (req, res) => {
-  const name = req.params.name;
+  const name = req.params.name.toLowerCase();
 
   const cat_product = products.products.filter((product) =>
     product.title.toLowerCase().includes(name)
