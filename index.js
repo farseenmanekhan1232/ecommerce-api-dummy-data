@@ -33,4 +33,12 @@ app.get("/product/:name", (req, res) => {
   res.send(JSON.stringify(cat_product));
 });
 
+app.get("/products/top", (req, res) => {
+  const products = products.products.filter(
+    (product) => product.discountPercentage > 15
+  );
+
+  res.send(JSON.stringify(products));
+});
+
 app.listen(8080);
