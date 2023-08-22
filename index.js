@@ -15,10 +15,16 @@ app.get("/products", (req, res) => {
 
 app.get("/:category", (req, res) => {
   const category = req.params.category;
-
-  const cat_product = products.products.filter(
-    (product) => product.category == category
-  );
+  var cat_product;
+  if (category == "top") {
+    cat_product = products.products.filter(
+      (product) => product.discountPercentage > 15
+    );
+  } else {
+    cat_product = products.products.filter(
+      (product) => product.category == category
+    );
+  }
   res.send(JSON.stringify(cat_product));
 });
 
@@ -29,14 +35,6 @@ app.get("/product/:name", (req, res) => {
     product.title.toLowerCase().includes(name)
   );
   res.send(JSON.stringify(cat_product));
-});
-
-app.get("/top", (req, res) => {
-  const top = products.products.filter(
-    (product) => product.discountPercentage > 15
-  );
-
-  res.send(JSON.stringify(top));
 });
 
 app.listen(8080);
