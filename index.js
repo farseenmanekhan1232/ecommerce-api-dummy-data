@@ -19,7 +19,6 @@ app.get("/products/:category", (req, res) => {
   const cat_product = products.products.filter(
     (product) => product.category == category
   );
-  console.log(products);
   res.send(JSON.stringify(cat_product));
 });
 
@@ -29,16 +28,15 @@ app.get("/product/:name", (req, res) => {
   const cat_product = products.products.filter((product) =>
     product.title.toLowerCase().includes(name)
   );
-  console.log(products);
   res.send(JSON.stringify(cat_product));
 });
 
-app.get("/products/top", (req, res) => {
-  const products = products.products.filter(
+app.get("/top", (req, res) => {
+  const top = products.products.filter(
     (product) => product.discountPercentage > 15
   );
 
-  res.send(JSON.stringify(products));
+  res.send(JSON.stringify(top));
 });
 
 app.listen(8080);
