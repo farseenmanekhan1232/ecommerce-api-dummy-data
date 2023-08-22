@@ -13,7 +13,7 @@ app.get("/products", (req, res) => {
   res.send(products);
 });
 
-app.get("/products/:category", (req, res) => {
+app.get("/:category", (req, res) => {
   const category = req.params.category;
 
   const cat_product = products.products.filter(
