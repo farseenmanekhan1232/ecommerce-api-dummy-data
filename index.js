@@ -37,4 +37,12 @@ app.get("/product/:name", (req, res) => {
   res.send(JSON.stringify(cat_product));
 });
 
+app.get("/id/:id", (req, res) => {
+  const id = req.params.id;
+  const filtered_product = products.products.filter(
+    (product) => product.id == id
+  );
+  res.send(JSON.stringify(filtered_product));
+});
+
 app.listen(8080);
